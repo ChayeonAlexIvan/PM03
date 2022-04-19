@@ -16,18 +16,18 @@ namespace PM03
         }
         public void SortBub(App[] Apps)
         {
-            //App Temp = new App();
-            //for (int j = 0; j <Apps.Length; j++)
-            //    for (int i = 0; i < Apps.Length - 1; i++)
-            //    {
+            App Temp = new App();
+            for (int j = 0; j < Apps.Length; j++)
+                for (int i = 0; i < Apps.Length - 1; i++)
+                {
 
-            //        if (Apps[i].Price < Apps[i + 1].Price)
-            //        {
-            //            Temp = Apps[i];
-            //            Apps[i] = Apps[i + 1];
-            //            Apps[i + 1] = Temp;
-            //        }
-            //    }
+                    if (Apps[i].Price < Apps[i + 1].Price)
+                    {
+                        Temp = Apps[i];
+                        Apps[i] = Apps[i + 1];
+                        Apps[i + 1] = Temp;
+                    }
+                }
         }
         public void SaveFile(App[] Apps)
         {
@@ -90,6 +90,11 @@ namespace PM03
                 Console.WriteLine("Введите " + (i+1) + " продукт ");
                 Console.WriteLine("Введите название программы: ");
                 SaveName = Console.ReadLine();
+                while (String.IsNullOrEmpty(SaveName))
+                {
+                    Console.WriteLine("Ошибка ввода названия программы, попробуйте снова");
+                    SaveName = Console.ReadLine();
+                }
                 Console.WriteLine("Введите производителя программы: ");
                 SaveManufacturer = Console.ReadLine();
                 Console.WriteLine("Введите цену программы: ");

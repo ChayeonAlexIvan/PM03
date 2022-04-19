@@ -73,7 +73,7 @@ namespace PM03
             string SaveName = "";
             string SaveManufacturer = "";
             int SavePrice = 0;
-            Console.WriteLine("Введите размер массива Apps = ");
+            Console.WriteLine("Введите размер массива Apps (размер не должен быть меньше 1 или отрицательным) = ");
             while  (!int.TryParse(Console.ReadLine(), out N))
             {
                 Console.WriteLine("Ошибка ввода, попробуйте снова");
@@ -97,6 +97,11 @@ namespace PM03
                 }
                 Console.WriteLine("Введите производителя программы: ");
                 SaveManufacturer = Console.ReadLine();
+                while (String.IsNullOrEmpty(SaveManufacturer))
+                {
+                    Console.WriteLine("Ошибка ввода производителя программы, попробуйте снова");
+                    SaveManufacturer = Console.ReadLine();
+                }
                 Console.WriteLine("Введите цену программы: ");
                 while (!int.TryParse(Console.ReadLine(), out SavePrice))
                 {

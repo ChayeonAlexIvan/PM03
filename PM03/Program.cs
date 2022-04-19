@@ -9,6 +9,19 @@ namespace PM03
         public string Name;
         public string Manufacturer;
         public int Price;
+        
+        public App()
+        {
+        }
+    }
+    public class Applications : App
+    {
+        public Applications(string Name_, string Manufacturer_, int Price_)
+        {
+            SetName(Name_);
+            SetManufacter(Manufacturer_);
+            SetPrice(Price_);
+        }
         public void SetName(string Name)
         {
             this.Name = Name;
@@ -33,11 +46,19 @@ namespace PM03
         {
             return Price;
         }
-        public App(string Name_, string Manufacturer_, int Price_)
+        public void Sort(App[] Apps, int N)
         {
-            SetName(Name_);
-            SetManufacter(Manufacturer_);
-            SetPrice(Price_);
+            App Temp;
+            for (int i = N - 1; i > 0; i--)
+                for (int j = 0; j < i; j++)
+                {
+                    if (Apps[j].Price < Apps[j + 1].Price)
+                    {
+                        Temp = Apps[j];
+                        Apps[j] = Apps[j + 1];
+                        Apps[j + 1] = Temp;
+                    }
+                }
         }
     }
     class Program
@@ -49,7 +70,15 @@ namespace PM03
             string SaveManufacturer = "";
             int SavePrice = 0;
             Console.WriteLine("Введите размер массива Apps = ");
-            N = Convert.ToInt32(Console.ReadLine());
+            while (!int.TryParse(Console.ReadLine(), out N))
+            {
+                Console.WriteLine("Ошибка ввода, попробуйте снова");
+            } 
+            while (N < 1)
+            {
+                Console.WriteLine("Ошибка ввода, попробуйте снова");
+                N = Convert.ToInt32(Console.ReadLine());
+            }
             App[] Apps = new App[N];
             for (int i = 1; i<N+1;i++)
             {
@@ -60,7 +89,7 @@ namespace PM03
                 SaveManufacturer = Console.ReadLine();
                 Console.WriteLine("Введите цену программы: ");
                 SavePrice = Convert.ToInt32(Console.ReadLine());
-                Apps[i] = new App(SaveName, SaveManufacturer, SavePrice);
+                Apps[i] = new Applications(SaveName, SaveManufacturer, SavePrice);
                 Console.WriteLine();
             }
         }

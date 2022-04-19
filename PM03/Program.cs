@@ -19,6 +19,24 @@ namespace PM03
         {
             this.Price = Price;
         }
+        public string GetName()
+        {
+            return Name;
+        }
+        public string GetManufacter()
+        {
+            return Manufacturer;
+        }
+        public int GetPrice()
+        {
+            return Price;
+        }
+        public App(string Name_, string Manufacter_, int Price_)
+        {
+            SetName(Name_);
+            SetManufacter(Manufacter_);
+            SetPrice(Price_);
+        }
     }
     class Program
     {

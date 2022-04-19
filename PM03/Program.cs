@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 
 namespace PM03
 {
@@ -31,10 +33,10 @@ namespace PM03
         {
             return Price;
         }
-        public App(string Name_, string Manufacter_, int Price_)
+        public App(string Name_, string Manufacturer_, int Price_)
         {
             SetName(Name_);
-            SetManufacter(Manufacter_);
+            SetManufacter(Manufacturer_);
             SetPrice(Price_);
         }
     }
@@ -42,7 +44,25 @@ namespace PM03
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int N = 0;
+            string SaveName = "";
+            string SaveManufacturer = "";
+            int SavePrice = 0;
+            Console.WriteLine("Введите размер массива Apps = ");
+            N = Convert.ToInt32(Console.ReadLine());
+            App[] Apps = new App[N];
+            for (int i = 1; i<N+1;i++)
+            {
+                Console.WriteLine("Введите " + i + " продукт ");
+                Console.WriteLine("Введите название программы: ");
+                SaveName = Console.ReadLine();
+                Console.WriteLine("Введите производителя программы: ");
+                SaveManufacturer = Console.ReadLine();
+                Console.WriteLine("Введите цену программы: ");
+                SavePrice = Convert.ToInt32(Console.ReadLine());
+                Apps[i] = new App(SaveName, SaveManufacturer, SavePrice);
+                Console.WriteLine();
+            }
         }
     }
 }
